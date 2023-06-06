@@ -37,8 +37,22 @@ struct ListView: View {
                     }
                 }
             }
+            Button {
+                //
+            } label: {
+                ZStack {
+                    Circle()
+                        .frame(width: 56, height: 56)
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.white)
+                }
+                
+                
+            }
+            .offset(x: -20, y: -30)
         }
-        //Button
     }
     
     
@@ -56,6 +70,7 @@ struct ListView: View {
                         .font(.system(size: 18, weight: .light))
                 }
                 Divider()
+                
                 VStack(alignment: .leading){
                     Text("примечание")
                         .font(.system(size: 12, weight: .black))
