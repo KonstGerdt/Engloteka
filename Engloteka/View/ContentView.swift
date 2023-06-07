@@ -8,36 +8,66 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var selected = 2
+    @State var selected = 1
+    
+    @ObservedObject var listViewModel = ListViewModel()
+    @ObservedObject var linkVeiwModel = LinkViewModel()
+    
     var body: some View {
-        TabView(selection: $selected) {
-            ListView()
-                .padding(.horizontal, 15)
-                .tag(1)
-                .tabItem {
-                    VStack {
-                        Image(systemName: "list.dash")
-                        Text("List")
+        ZStack{
+            TabView(selection: $selected) {
+                ListView()
+                    .environmentObject(listViewModel)
+                    .padding(.horizontal, 15)
+                    .tag(1)
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "list.dash")
+                            Text("List")
+                        }
                     }
-                }
-            RandomWordView()
-                .padding(.horizontal, 15)
-                .tag(2)
-                .tabItem {
-                    VStack {
-                        Image(systemName: "textformat.abc")
-                        Text("ABC")
+                RandomWordView()
+                    .padding(.horizontal, 15)
+                    .tag(2)
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "textformat.abc")
+                            Text("ABC")
+                        }
                     }
-                }
-            Text("Links")
-                .tag(3)
-                .tabItem {
-                    VStack {
-                        Image(systemName: "link")
-                        Text("Link")
+                LinksView()
+                    .environmentObject(linkVeiwModel)
+                    .padding(.horizontal, 15)
+                    .tag(3)
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "link")
+                            Text("Link")
+                        }
                     }
-                }
-        }
+            }
+           
+            
+          
+            if listViewModel.isShowAddView{
+                NewWord()
+                    .environmentObject(listViewModel)
+              
+            }
+            
+            if linkVeiwModel.isShowAddLink{
+                NewLink()
+                    .environmentObject(linkVeiwModel)
+              
+            }
+            
+//            VStack {
+//
+//            }
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//            .background(.black)
+      }
+        
     }
 }
 

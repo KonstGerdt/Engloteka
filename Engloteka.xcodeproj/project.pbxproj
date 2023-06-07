@@ -13,6 +13,11 @@
 		DC8745EE2A20F89C0014A6CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8745ED2A20F89C0014A6CF /* Assets.xcassets */; };
 		DC8745F12A20F89C0014A6CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8745F02A20F89C0014A6CF /* Preview Assets.xcassets */; };
 		DC8745FB2A20FB470014A6CF /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8745FA2A20FB470014A6CF /* ListView.swift */; };
+		DC91F2362A305BEA00C79F15 /* LinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC91F2352A305BEA00C79F15 /* LinksView.swift */; };
+		DC91F2382A30BE5E00C79F15 /* NewWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC91F2372A30BE5E00C79F15 /* NewWord.swift */; };
+		DC91F23A2A30BE8E00C79F15 /* NewLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC91F2392A30BE8E00C79F15 /* NewLink.swift */; };
+		DC91F23C2A30F56C00C79F15 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC91F23B2A30F56C00C79F15 /* ListViewModel.swift */; };
+		DC91F23E2A30FE4D00C79F15 /* LinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC91F23D2A30FE4D00C79F15 /* LinkViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +28,11 @@
 		DC8745ED2A20F89C0014A6CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC8745F02A20F89C0014A6CF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DC8745FA2A20FB470014A6CF /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		DC91F2352A305BEA00C79F15 /* LinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksView.swift; sourceTree = "<group>"; };
+		DC91F2372A30BE5E00C79F15 /* NewWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWord.swift; sourceTree = "<group>"; };
+		DC91F2392A30BE8E00C79F15 /* NewLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLink.swift; sourceTree = "<group>"; };
+		DC91F23B2A30F56C00C79F15 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		DC91F23D2A30FE4D00C79F15 /* LinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +85,8 @@
 		DC8745F72A20F8CA0014A6CF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DC91F23B2A30F56C00C79F15 /* ListViewModel.swift */,
+				DC91F23D2A30FE4D00C79F15 /* LinkViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -84,8 +96,11 @@
 			children = (
 				DC8745EB2A20F89B0014A6CF /* ContentView.swift */,
 				DC8745FA2A20FB470014A6CF /* ListView.swift */,
-				DC8745E92A20F89B0014A6CF /* EnglotekaApp.swift */,
+				DC91F2372A30BE5E00C79F15 /* NewWord.swift */,
 				DC123B612A2F60DF00ED8D27 /* RandomWordView.swift */,
+				DC91F2352A305BEA00C79F15 /* LinksView.swift */,
+				DC8745E92A20F89B0014A6CF /* EnglotekaApp.swift */,
+				DC91F2392A30BE8E00C79F15 /* NewLink.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -167,9 +182,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC91F2382A30BE5E00C79F15 /* NewWord.swift in Sources */,
+				DC91F23E2A30FE4D00C79F15 /* LinkViewModel.swift in Sources */,
 				DC8745EC2A20F89B0014A6CF /* ContentView.swift in Sources */,
 				DC8745EA2A20F89B0014A6CF /* EnglotekaApp.swift in Sources */,
+				DC91F2362A305BEA00C79F15 /* LinksView.swift in Sources */,
+				DC91F23A2A30BE8E00C79F15 /* NewLink.swift in Sources */,
 				DC8745FB2A20FB470014A6CF /* ListView.swift in Sources */,
+				DC91F23C2A30F56C00C79F15 /* ListViewModel.swift in Sources */,
 				DC123B622A2F60DF00ED8D27 /* RandomWordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

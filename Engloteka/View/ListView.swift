@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ListView: View {
     @State var searchText = ""
+    @EnvironmentObject var listViewModel: ListViewModel
+    
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)) {
             ScrollView(.vertical, showsIndicators: false) {
@@ -24,8 +26,7 @@ struct ListView: View {
                     .padding(.vertical, 16)
                     .padding(.horizontal, 20)
                     .background(Color("GRAY"))
-                    .cornerRadius(10)
-                    
+                    .clipShape(Capsule())
                     
                     //cards
                     VStack(spacing: 20){
@@ -38,11 +39,12 @@ struct ListView: View {
                 }
             }
             Button {
-                //
+                listViewModel.isShowAddView.toggle()
             } label: {
                 ZStack {
                     Circle()
                         .frame(width: 56, height: 56)
+                        .foregroundColor(Color("MAIN"))
                     Image(systemName: "plus")
                         .resizable()
                         .frame(width: 20, height: 20)
