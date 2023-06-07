@@ -14,7 +14,7 @@ struct LinksView: View {
             ScrollView() {
                 VStack(spacing: 20){
                     LinkItem(text: "Урок по грамматике")
-                    LinkItem(text: "Урок по грамматикеУрок по грамматикеУрок по грамматикеУрок по грамматикеУрок по грамматикеУрок по грамматикеУрок по грамматикеУрок по грамматике")
+                    LinkItem(text: "Урок по грамматике")
                 
                 }
                 
@@ -68,8 +68,8 @@ struct LinkItem: View {
         .frame(maxWidth: .infinity)
         .padding(20)
         .background(Color("GRAY"))
-        .clipShape(Capsule())
-        //.cornerRadius(10)
+        //.clipShape(Capsule())
+        .cornerRadius(10)
     }
 }
 

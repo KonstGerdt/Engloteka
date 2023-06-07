@@ -18,6 +18,7 @@
 		DC91F23A2A30BE8E00C79F15 /* NewLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC91F2392A30BE8E00C79F15 /* NewLink.swift */; };
 		DC91F23C2A30F56C00C79F15 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC91F23B2A30F56C00C79F15 /* ListViewModel.swift */; };
 		DC91F23E2A30FE4D00C79F15 /* LinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC91F23D2A30FE4D00C79F15 /* LinkViewModel.swift */; };
+		DC91F2402A3112F000C79F15 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC91F23F2A3112F000C79F15 /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		DC91F2392A30BE8E00C79F15 /* NewLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLink.swift; sourceTree = "<group>"; };
 		DC91F23B2A30F56C00C79F15 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		DC91F23D2A30FE4D00C79F15 /* LinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewModel.swift; sourceTree = "<group>"; };
+		DC91F23F2A3112F000C79F15 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 		DC8745E82A20F89B0014A6CF /* Engloteka */ = {
 			isa = PBXGroup;
 			children = (
+				DC91F2412A3114EF00C79F15 /* LaunchScreen */,
 				DC8745F92A20F8F30014A6CF /* Model */,
 				DC8745F72A20F8CA0014A6CF /* ViewModel */,
 				DC8745F82A20F8D80014A6CF /* View */,
@@ -94,12 +97,12 @@
 		DC8745F82A20F8D80014A6CF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DC8745E92A20F89B0014A6CF /* EnglotekaApp.swift */,
 				DC8745EB2A20F89B0014A6CF /* ContentView.swift */,
 				DC8745FA2A20FB470014A6CF /* ListView.swift */,
 				DC91F2372A30BE5E00C79F15 /* NewWord.swift */,
 				DC123B612A2F60DF00ED8D27 /* RandomWordView.swift */,
 				DC91F2352A305BEA00C79F15 /* LinksView.swift */,
-				DC8745E92A20F89B0014A6CF /* EnglotekaApp.swift */,
 				DC91F2392A30BE8E00C79F15 /* NewLink.swift */,
 			);
 			path = View;
@@ -110,6 +113,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DC91F2412A3114EF00C79F15 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				DC91F23F2A3112F000C79F15 /* SplashScreen.swift */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC91F2402A3112F000C79F15 /* SplashScreen.swift in Sources */,
 				DC91F2382A30BE5E00C79F15 /* NewWord.swift in Sources */,
 				DC91F23E2A30FE4D00C79F15 /* LinkViewModel.swift in Sources */,
 				DC8745EC2A20F89B0014A6CF /* ContentView.swift in Sources */,
