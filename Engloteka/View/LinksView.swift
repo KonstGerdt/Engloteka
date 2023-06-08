@@ -14,41 +14,51 @@ struct LinksView: View {
     
     
     var body: some View {
-        ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)){
-            ScrollView() {
-                VStack(spacing: 20){
-                    
-                    ForEach(links, id: \.id) { link in
-                        LinkItem(link: link) { _ in
-                            $links.remove(link)
+        NavigationView{
+            ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)){
+                ScrollView() {
+                    VStack(spacing: 20){
+                        
+                        ForEach(links, id: \.id) { link in
+                            NavigationLink{
+                                LinkShowView(url: link.link)
+                            }label: {
+                                LinkItem(link: link) { _ in
+                                    $links.remove(link)
+                                }
+                                .foregroundColor(.black)
+
+                            }
+                                                        
                         }
                         
+                        
+                    }
+                    
+                }
+                .navigationTitle("Links")
+                .padding(.horizontal, 15)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Button {
+                    linkVeiwModel.isShowAddLink.toggle()
+                } label: {
+                    ZStack {
+                        Circle()
+                            .frame(width: 56, height: 56)
+                            .foregroundColor(Color("MAIN"))
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.white)
                     }
                     
                     
                 }
-                
+                .offset(x: -20, y: -30)
             }
-            .padding(.horizontal, 15)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Button {
-                linkVeiwModel.isShowAddLink.toggle()
-            } label: {
-                ZStack {
-                    Circle()
-                        .frame(width: 56, height: 56)
-                        .foregroundColor(Color("MAIN"))
-                    Image(systemName: "plus")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.white)
-                }
-                
-                
-            }
-            .offset(x: -20, y: -30)
         }
+        
         .frame(maxWidth: .infinity, alignment: .trailing)
         
     }
@@ -83,10 +93,10 @@ struct LinkItem: View {
         .background(Color("GRAY"))
         //.clipShape(Capsule())
         .cornerRadius(10)
-        .onTapGesture {
-            linkVeiwModel.isShowLinkContent.toggle()
-            linkVeiwModel.openUrl =  link.link
-        }
+//        .onTapGesture {
+//            linkVeiwModel.isShowLinkContent.toggle()
+//            linkVeiwModel.openUrl =  link.link
+//        }
     }
 }
 

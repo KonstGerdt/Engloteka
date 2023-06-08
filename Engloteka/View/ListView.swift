@@ -12,7 +12,7 @@ import RealmSwift
 struct ListView: View {
     @State var searchText = ""
     @EnvironmentObject var listViewModel: ListViewModel
-    @ObservedResults(WordItem.self) var wordItems
+    @ObservedResults(WordItem.self, sortDescriptor: SortDescriptor(keyPath: "mainWord", ascending: true)) var wordItems
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)) {
             ScrollView(.vertical, showsIndicators: false) {
@@ -23,12 +23,16 @@ struct ListView: View {
                             .resizable()
                             .frame(width: 15, height: 15)
                         TextField("Search", text: $searchText)
+                            .textInputAutocapitalization(.never)
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 16)
                     .padding(.horizontal, 20)
                     .background(Color("GRAY"))
                     .clipShape(Capsule())
+                    .searchable(text: $searchText, collection: $wordItems, keyPath: \.mainWord)
+                    
+                    
                     
                     //cards
                     VStack(spacing: 20){

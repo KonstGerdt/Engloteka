@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct RandomWordView: View {
     @State var isShowTranslate = false
+    @ObservedResults(WordItem.self) var wordItems
+    @State var offsetX: CGFloat = 0
+    @State var opacity: CGFloat = 1
+    
+    @State var word = WordItem()
+    
     var body: some View {
         ZStack{
             VStack{
@@ -17,11 +24,11 @@ struct RandomWordView: View {
                     VStack(alignment: .leading){
                         Text("ENG")
                             .font(.system(size: 12, weight: .black))
-                        Text("Car")
+                        Text(word.mainWord)
                             .font(.system(size: 36, weight: .black))
                     }
                     ZStack {
-                        Text("Машина")
+                        Text(word.wordTranslate)
                             .font(.system(size: 26,weight: .thin))
                             .opacity(isShowTranslate ? 1 : 0)
                         Button {
@@ -42,9 +49,24 @@ struct RandomWordView: View {
                     }
                     
                 }
+                .opacity(opacity)
+                .offset(x: offsetX)
                 Spacer()
                 Button {
-                    //
+                    withAnimation{
+                        offsetX = -50
+                        opacity = 0
+                    }
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
+                        getRandomWord()
+                        offsetX = 50
+                        isShowTranslate = false
+                        withAnimation{
+                            offsetX = 0
+                            opacity = 1
+                        }
+                    }
                 } label: {
                     HStack {
                         Text("Next")
@@ -58,7 +80,15 @@ struct RandomWordView: View {
                 .opacity(0)
             }
             .frame(maxWidth: .infinity)
+            .onAppear{
+                getRandomWord()
+            }
         }
+        
+    }
+     func getRandomWord() {
+        let rand = Int.random(in: 0...wordItems.count - 1)
+         self.word =  wordItems[rand]
     }
     
     struct RandomWordView_Previews: PreviewProvider {

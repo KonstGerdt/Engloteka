@@ -60,10 +60,10 @@ struct ContentView: View {
               
             }
             
-            if linkVeiwModel.isShowLinkContent{
-                LinkShowView(url: $linkVeiwModel.openUrl)
-                    .environmentObject(linkVeiwModel)
-            }
+//            if linkVeiwModel.isShowLinkContent{
+//                LinkShowView(url: $linkVeiwModel.openUrl)
+//                    .environmentObject(linkVeiwModel)
+//            }
             
 //            VStack {
 //
