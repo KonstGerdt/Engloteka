@@ -11,6 +11,9 @@
 		DC5CC5142A31E4C3008F1BA4 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DC5CC5132A31E4C3008F1BA4 /* Realm */; };
 		DC5CC5162A31E4C3008F1BA4 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DC5CC5152A31E4C3008F1BA4 /* RealmSwift */; };
 		DC5CC5182A31E503008F1BA4 /* WordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5CC5172A31E503008F1BA4 /* WordItem.swift */; };
+		DC5CC51B2A320A84008F1BA4 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5CC51A2A320A84008F1BA4 /* WebView.swift */; };
+		DC5CC51D2A322D96008F1BA4 /* LinkShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5CC51C2A322D96008F1BA4 /* LinkShowView.swift */; };
+		DC5CC5212A3251B5008F1BA4 /* LinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5CC5202A3251B5008F1BA4 /* LinkModel.swift */; };
 		DC8745EA2A20F89B0014A6CF /* EnglotekaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8745E92A20F89B0014A6CF /* EnglotekaApp.swift */; };
 		DC8745EC2A20F89B0014A6CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8745EB2A20F89B0014A6CF /* ContentView.swift */; };
 		DC8745EE2A20F89C0014A6CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC8745ED2A20F89C0014A6CF /* Assets.xcassets */; };
@@ -27,6 +30,9 @@
 /* Begin PBXFileReference section */
 		DC123B612A2F60DF00ED8D27 /* RandomWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWordView.swift; sourceTree = "<group>"; };
 		DC5CC5172A31E503008F1BA4 /* WordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WordItem.swift; path = Engloteka/View/WordItem.swift; sourceTree = SOURCE_ROOT; };
+		DC5CC51A2A320A84008F1BA4 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		DC5CC51C2A322D96008F1BA4 /* LinkShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkShowView.swift; sourceTree = "<group>"; };
+		DC5CC5202A3251B5008F1BA4 /* LinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinkModel.swift; path = Engloteka/View/LinkModel.swift; sourceTree = SOURCE_ROOT; };
 		DC8745E62A20F89B0014A6CF /* Engloteka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Engloteka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8745E92A20F89B0014A6CF /* EnglotekaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglotekaApp.swift; sourceTree = "<group>"; };
 		DC8745EB2A20F89B0014A6CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC5CC5192A320A6A008F1BA4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DC5CC51A2A320A84008F1BA4 /* WebView.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		DC8745DD2A20F89B0014A6CF = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +87,7 @@
 		DC8745E82A20F89B0014A6CF /* Engloteka */ = {
 			isa = PBXGroup;
 			children = (
+				DC5CC5192A320A6A008F1BA4 /* Extension */,
 				DC91F2412A3114EF00C79F15 /* LaunchScreen */,
 				DC8745F92A20F8F30014A6CF /* Model */,
 				DC8745F72A20F8CA0014A6CF /* ViewModel */,
@@ -110,6 +125,7 @@
 				DC123B612A2F60DF00ED8D27 /* RandomWordView.swift */,
 				DC91F2352A305BEA00C79F15 /* LinksView.swift */,
 				DC91F2392A30BE8E00C79F15 /* NewLink.swift */,
+				DC5CC51C2A322D96008F1BA4 /* LinkShowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -118,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				DC5CC5172A31E503008F1BA4 /* WordItem.swift */,
+				DC5CC5202A3251B5008F1BA4 /* LinkModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +233,9 @@
 				DC91F23A2A30BE8E00C79F15 /* NewLink.swift in Sources */,
 				DC8745FB2A20FB470014A6CF /* ListView.swift in Sources */,
 				DC91F23C2A30F56C00C79F15 /* ListViewModel.swift in Sources */,
+				DC5CC51B2A320A84008F1BA4 /* WebView.swift in Sources */,
+				DC5CC5212A3251B5008F1BA4 /* LinkModel.swift in Sources */,
+				DC5CC51D2A322D96008F1BA4 /* LinkShowView.swift in Sources */,
 				DC123B622A2F60DF00ED8D27 /* RandomWordView.swift in Sources */,
 				DC5CC5182A31E503008F1BA4 /* WordItem.swift in Sources */,
 			);

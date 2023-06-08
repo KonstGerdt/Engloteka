@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct NewLink: View {
     @State var linkTitle = ""
     @State var link = ""
     @EnvironmentObject var linkVeiwModel: LinkViewModel
+    @State var showAlert = false
+    @ObservedResults(LinkModel.self) var links
+
+    
+    
+    
     var body: some View {
         VStack{
             HStack{
@@ -53,7 +60,20 @@ struct NewLink: View {
             
             Spacer()
             Button{
-                
+                if  linkTitle.count < 0,
+                    link.count < 0{
+                    showAlert.toggle()
+                }else{
+                 
+                    let newLink = LinkModel()
+                    newLink.link = link
+                    newLink.linkName = linkTitle
+                    
+                    $links.append(newLink)
+                    withAnimation{
+                        linkVeiwModel.isShowAddLink.toggle()
+                    }
+                }
             }label: {
                 Text("Save")
                     .padding (.vertical, 13)
@@ -63,6 +83,7 @@ struct NewLink: View {
                     .clipShape(Capsule())
             
             }
+            .alert(Text("Empty fields"), isPresented: $showAlert, actions: {})
         }
         
         .frame (maxWidth: .infinity, maxHeight: .infinity, alignment: .top)

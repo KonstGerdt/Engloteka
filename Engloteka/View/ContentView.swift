@@ -37,7 +37,6 @@ struct ContentView: View {
                     }
                 LinksView()
                     .environmentObject(linkVeiwModel)
-                    .padding(.horizontal, 15)
                     .tag(3)
                     .tabItem {
                         VStack {
@@ -59,6 +58,11 @@ struct ContentView: View {
                 NewLink()
                     .environmentObject(linkVeiwModel)
               
+            }
+            
+            if linkVeiwModel.isShowLinkContent{
+                LinkShowView(url: $linkVeiwModel.openUrl)
+                    .environmentObject(linkVeiwModel)
             }
             
 //            VStack {
