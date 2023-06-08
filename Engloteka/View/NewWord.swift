@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct NewWord: View {
     @State var newWord = ""
     @State var wordTranslate = ""
     @State var wordDescription = ""
+    @State var showAlert = false
+    @ObservedResults(WordItem.self) var wordItems
     @EnvironmentObject var listViewModel: ListViewModel
     var body: some View {
         VStack{
@@ -73,7 +76,21 @@ struct NewWord: View {
             
             Spacer()
             Button{
-                
+                if newWord.count == 0,
+                   wordTranslate.count == 0{
+                    showAlert.toggle()
+                }else{
+                    let word = WordItem()
+                    word.mainWord = newWord
+                    word.wordDescription = wordDescription
+                    word.wordTranslate = wordTranslate
+                    
+                    $wordItems.append(word)
+                    
+                    withAnimation{
+                        listViewModel.isShowAddView.toggle()
+                    }
+                }
             }label: {
                 Text("Save")
                     .padding (.vertical, 13)
@@ -83,12 +100,14 @@ struct NewWord: View {
                     .clipShape(Capsule())
             
             }
+            .alert(Text("Empty fields"), isPresented: $showAlert, actions: {})
         }
         
         .frame (maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding(15)
         .background(.white)
     }
+    
 }
 
 struct NewWord_Previews: PreviewProvider {

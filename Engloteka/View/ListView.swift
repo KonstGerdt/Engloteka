@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import RealmSwift
+
 
 struct ListView: View {
     @State var searchText = ""
     @EnvironmentObject var listViewModel: ListViewModel
-    
+    @ObservedResults(WordItem.self) var wordItems
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)) {
             ScrollView(.vertical, showsIndicators: false) {
@@ -30,13 +32,16 @@ struct ListView: View {
                     
                     //cards
                     VStack(spacing: 20){
-                        CardItem()
-                        CardItem()
-                        CardItem()
-                        CardItem()
-                        CardItem()
+                        ForEach(wordItems, id: \.id) { item in 
+                            CardItem(cardItem: item){
+                                $wordItems.remove(item)
+                            }
+                        }
+                       
+                       
                     }
                 }
+                .padding(.horizontal, 15)
             }
             Button {
                 listViewModel.isShowAddView.toggle()
@@ -59,32 +64,87 @@ struct ListView: View {
     
     
     struct CardItem: View {
+        
+        @State var offsetX: CGFloat = 0
+        
+        var cardItem: WordItem
+        
+        var onDelete: ()->()
+        
         var body: some View{
-            VStack(alignment: .leading, spacing: 10){
-                VStack(alignment: .leading, spacing: 0){
-                    Text("ENG")
-                        .font(.system(size: 12, weight: .black))
-                        .padding(.bottom, 5)
-                    Text("Car")
-                        .font(.system(size: 18, weight: .black))
-                        .padding(.bottom, 2)
-                    Text("Машина")
-                        .font(.system(size: 18, weight: .light))
-                }
-                Divider()
+            ZStack(alignment: .trailing){
+                removeImage()
+
                 
-                VStack(alignment: .leading){
-                    Text("примечание")
-                        .font(.system(size: 12, weight: .black))
-                        .foregroundColor(Color("GRAY1"))
-                        .padding(.bottom, 1)
-                    Text("Despite the fact that the package containes not the best description of the car - it was quite enough to build a car for the weekend, so it was only a few key components of attention.")
+                
+                VStack(alignment: .leading, spacing: 10){
+                    VStack(alignment: .leading, spacing: 0){
+                        Text("ENG")
+                            .font(.system(size: 12, weight: .black))
+                            .padding(.bottom, 5)
+                        Text(cardItem.mainWord)
+                            .font(.system(size: 18, weight: .black))
+                            .padding(.bottom, 2)
+                        Text(cardItem.wordTranslate)
+                            .font(.system(size: 18, weight: .light))
+                    }
+                    
+                    
+                    if cardItem.wordDescription.count > 0 {
+                        Divider()
+                        VStack(alignment: .leading){
+                            Text("примечание")
+                                .font(.system(size: 12, weight: .black))
+                                .foregroundColor(Color("GRAY1"))
+                                .padding(.bottom, 1)
+                            Text(cardItem.wordDescription)
+                        }
+                    }
+                    
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(20)
+                .background(Color("GRAY"))
+                .cornerRadius(10)
+                .offset(x: offsetX)
+                .gesture(DragGesture()
+                    .onChanged{value in
+                        if value.translation.width < 0 {
+                            offsetX = value.translation.width
+                        }
+                    }
+                    .onEnded{ value in
+                        withAnimation{
+                            if screeSize().width * 0.7 < -value.translation.width{
+                                
+                                
+                                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                
+                                withAnimation{
+                                    offsetX = -screeSize().width
+                                        onDelete()
+                                }
+                            }else{
+                                offsetX = .zero
+                            }
+                            
+                        }
+                    }
+                )
+
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(20)
-            .background(Color("GRAY"))
-            .cornerRadius(10)
+            
+            
+        }
+        @ViewBuilder
+        func removeImage() -> some View{
+            Image(systemName: "xmark")
+                .resizable()
+                .frame(width: 10, height: 10)
+                .offset(x: 30)
+                .offset(x: offsetX*0.4)
+                .scaleEffect(CGSize(width: 0.1 * -offsetX * 0.08,
+                                    height: 0.1 * -offsetX * 0.08))
         }
         
     }
@@ -93,5 +153,15 @@ struct ListView: View {
         static var previews: some View {
             ContentView()
         }
+    }
+    
+}
+extension View {
+    func screeSize() -> CGSize{
+        guard let window = UIApplication.shared.connectedScenes.first as?
+                UIWindowScene else{
+            return.zero
+        }
+        return window.screen.bounds.size
     }
 }

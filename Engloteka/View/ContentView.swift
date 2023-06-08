@@ -18,7 +18,7 @@ struct ContentView: View {
             TabView(selection: $selected) {
                 ListView()
                     .environmentObject(listViewModel)
-                    .padding(.horizontal, 15)
+                    //.padding(.horizontal, 15)
                     .tag(1)
                     .tabItem {
                         VStack {
