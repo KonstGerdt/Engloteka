@@ -86,6 +86,7 @@ struct NewLink: View {
             .alert(Text("Empty fields"), isPresented: $showAlert, actions: {})
         }
         
+        
         .frame (maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .padding(15)
         .background(.white)
