@@ -87,6 +87,10 @@ struct RandomWordView: View {
         
     }
      func getRandomWord() {
+         if wordItems .isEmpty{
+             print("массив данных пуст")
+             return
+         }
         let rand = Int.random(in: 0...wordItems.count - 1)
          self.word =  wordItems[rand]
     }
